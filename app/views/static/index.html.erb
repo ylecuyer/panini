@@ -1,0 +1,19 @@
+<div class="container">
+  <% (0..9).each do |car| %>
+    <%= "</div>".html_safe if car%3 == 0 && car != 0 %>
+    <%= "<div class=\"columns\">".html_safe if car%3 == 0 %>
+    <div class="column">
+      <div class="card">
+        <figure class="card-image">
+          <img src="http://placehold.it/300x225?text=<%= "%03d" % car %>" alt="">
+        </figure>
+        <div class="card-content">
+          <div class="content">
+            <small>11:09 PM - 1 Jan 2016</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
