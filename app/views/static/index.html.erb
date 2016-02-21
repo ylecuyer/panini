@@ -1,16 +1,25 @@
 <div class="container">
-  <% (0..9).each do |car| %>
-    <%= "</div>".html_safe if car%3 == 0 && car != 0 %>
-    <%= "<div class=\"columns\">".html_safe if car%3 == 0 %>
+  <% (0..999).each do |index| %>
+    <% @car = @cars[index] %>
+    <%= "</div>".html_safe if index%3 == 0 && index != 0 %>
+    <%= "<div class=\"columns\">".html_safe if index%3 == 0 %>
     <div class="column">
-      <%= link_to car_path(car) do %>
-      <div class="card"> 
+      <% url = if @car then car_path(@car) else new_car_path(plate: index) end %>
+      <%= link_to url do %>
+        <div class="card" id="<%= plate_str(index) %>"> 
         <figure class="card-image">
-          <img src="http://placehold.it/300x225?text=<%= "%03d" % car %>" alt="" onmouseover="hover(this)" onmouseout="unhover(this, '<%= "%03d" % car %>')">
+          <% if @car %>
+            <%= image_tag @car.picture.url(:thumb) %>
+          <% else %>
+          <% end %>
         </figure>
         <div class="card-content">
           <div class="content">
+          <% if @car %>
+            <small><%= time_ago_in_words @car.created_at %></small>
+          <% else %>
             <small>11:09 PM - 1 Jan 2016</small>
+          <% end %>
           </div>
         </div>
       </div>
@@ -21,6 +30,17 @@
 </div>
 
 <script type="text/javascript">
+
+function paddy(n, p, c) {
+    var pad_char = typeof c !== 'undefined' ? c : '0';
+    var pad = new Array(1 + p).join(pad_char);
+    return (pad + n).slice(-pad.length);
+}
+
+function scroll(id) {
+  window.scrollTo(0, document.getElementById(paddy(id, 3)).offsetTop - ( window.innerHeight / 2 ))
+}
+
 function hover(elt) {
   elt.src = "http://placehold.it/300x225?text=%2B";
   elt.style.opacity = 1;
@@ -28,6 +48,6 @@ function hover(elt) {
 
 function unhover(elt, text) {
   elt.src = "http://placehold.it/300x225?text="+text;
-  elt.style.opacity = 0.4;
+  elt.style.opacity = 0.2;
 }
 </script>

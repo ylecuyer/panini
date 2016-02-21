@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="columns">
+    <div class="column">
+      <div class="card"> 
+        <figure class="card-image">
+          <img src="http://placehold.it/300x225?text=<%= plate_str(@plate) %>" alt="">
+        </figure>
+        <div class="card-content">
+          <div class="content">
+            <small>11:09 PM - 1 Jan 2016</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <%= form_for @car do |f| %>
+        <%= f.file_field :picture %>
+        <%= f.hidden_field :plate, value: @plate %>
+        <%= f.submit "Create" %>
+      <% end %>
+    </div>
+  </div>
+</div>
