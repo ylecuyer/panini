@@ -6,11 +6,12 @@
     <div class="column">
       <% url = if @car then car_path(@car) else new_car_path(plate: index) end %>
       <%= link_to url do %>
-        <div class="card" id="<%= plate_str(index) %>"> 
+        <div class="card hoverable" id="<%= plate_str(index) %>"> 
         <figure class="card-image">
           <% if @car %>
             <%= image_tag @car.picture.url(:thumb) %>
           <% else %>
+            <span class="placeholder"><span class="plate"><%= plate_str(index) %></span></span>
           <% end %>
         </figure>
         <div class="card-content">
@@ -41,13 +42,4 @@ function scroll(id) {
   window.scrollTo(0, document.getElementById(paddy(id, 3)).offsetTop - ( window.innerHeight / 2 ))
 }
 
-function hover(elt) {
-  elt.src = "http://placehold.it/300x225?text=%2B";
-  elt.style.opacity = 1;
-}
-
-function unhover(elt, text) {
-  elt.src = "http://placehold.it/300x225?text="+text;
-  elt.style.opacity = 0.2;
-}
 </script>
