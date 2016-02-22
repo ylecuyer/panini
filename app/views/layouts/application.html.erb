@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Panini</title>
-  <link rel="stylesheet" href="https://cdn.rawgit.com/jgthms/bulma/master/css/bulma.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Panini</title>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/jgthms/bulma/master/css/bulma.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<%= yield %>
+    <header class="header is-fixed-top">
+      <div class="container">
+        <!-- Left side -->
+        <div class="header-left">
+          <a class="header-item" href="#">
+            <strong>Panini</strong>
+          </a>
+        </div>
 
-</body>
+        <!-- Right side -->
+        <div class="header-right header-menu">
+          <span class="header-item">
+            <p class="control is-grouped">
+            <input class="input" type="text" id="search" placeholder="Find a plate">
+            <button class="button" onclick="goToPlate()">Search</button>
+            </p>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <%= yield %>
+
+    </div>
+  </body>
 </html>

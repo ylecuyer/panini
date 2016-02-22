@@ -15,7 +15,7 @@
  */
 
 body {
-  padding: 20px;
+  padding: 70px;
 }
 
 .card-content {
@@ -58,4 +58,12 @@ body {
 
 .card .content {
   color: #69707a;
+}
+
+.header.is-fixed-top {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  top: 0;
 }

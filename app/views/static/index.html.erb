@@ -1,33 +1,31 @@
-<div class="container">
-  <% (0..999).each do |index| %>
-    <% @car = @cars[index] %>
-    <%= "</div>".html_safe if index%3 == 0 && index != 0 %>
-    <%= "<div class=\"columns\">".html_safe if index%3 == 0 %>
-    <div class="column">
-      <% url = if @car then car_path(@car) else new_car_path(plate: index) end %>
-      <%= link_to url do %>
-        <div class="card hoverable" id="<%= plate_str(index) %>"> 
-        <figure class="card-image">
-          <% if @car %>
-            <%= image_tag @car.picture.url(:thumb) %>
-          <% else %>
-            <span class="placeholder"><span class="plate"><%= plate_str(index) %></span></span>
-          <% end %>
-        </figure>
-        <div class="card-content">
-          <div class="content">
-          <% if @car %>
-            <small><%= time_ago_in_words @car.created_at %></small>
-          <% else %>
-            <small>11:09 PM - 1 Jan 2016</small>
-          <% end %>
-          </div>
+<% (0..999).each do |index| %>
+  <% @car = @cars[index] %>
+  <%= "</div>".html_safe if index%3 == 0 && index != 0 %>
+  <%= "<div class=\"columns\">".html_safe if index%3 == 0 %>
+  <div class="column">
+    <% url = if @car then car_path(@car) else new_car_path(plate: index) end %>
+    <%= link_to url do %>
+      <div class="card hoverable" id="<%= plate_str(index) %>"> 
+      <figure class="card-image">
+        <% if @car %>
+          <%= image_tag @car.picture.url(:thumb) %>
+        <% else %>
+          <span class="placeholder"><span class="plate"><%= plate_str(index) %></span></span>
+        <% end %>
+      </figure>
+      <div class="card-content">
+        <div class="content">
+        <% if @car %>
+          <small><%= time_ago_in_words @car.created_at %></small>
+        <% else %>
+          <small>11:09 PM - 1 Jan 2016</small>
+        <% end %>
         </div>
       </div>
-    <% end %>
     </div>
   <% end %>
   </div>
+<% end %>
 </div>
 
 <script type="text/javascript">
@@ -39,7 +37,12 @@ function paddy(n, p, c) {
 }
 
 function scroll(id) {
-  window.scrollTo(0, document.getElementById(paddy(id, 3)).offsetTop - ( window.innerHeight / 2 ))
+  window.scrollTo(0, document.getElementById(paddy(id, 3)).offsetTop + 50)
+}
+
+function goToPlate() {
+  id = document.getElementById("search").value
+  scroll(id)
 }
 
 </script>

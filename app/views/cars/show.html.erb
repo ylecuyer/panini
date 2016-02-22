@@ -1,14 +1,12 @@
-<div class="container">
-  <div class="columns">
-    <div class="column">
-      <div class="card large"> 
-        <figure class="card-image">
-          <%= image_tag @car.picture.url(:large) %>
-        </figure>
-        <div class="card-content">
-          <div class="content">
-            <small><%= time_ago_in_words @car.created_at%></small>
-          </div>
+<div class="columns">
+  <div class="column">
+    <div class="card large"> 
+      <figure class="card-image">
+        <%= image_tag @car.picture.url(:large) %>
+      </figure>
+      <div class="card-content">
+        <div class="content">
+          <small><%= time_ago_in_words @car.created_at%></small>
         </div>
       </div>
     </div>

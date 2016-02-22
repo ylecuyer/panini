@@ -1,21 +1,19 @@
-<div class="container">
-  <% @cars.each_with_index do |car, index| %>
-    <%= "</div>".html_safe if index%3 == 0 && index != 0 %>
-    <%= "<div class=\"columns\">".html_safe if index%3 == 0 %>
-    <div class="column">
-      <%= link_to car_path(car) do %>
-      <div class="card"> 
-        <figure class="card-image">
-          <%= image_tag car.picture.url(:thumb) %>
-        </figure>
-        <div class="card-content">
-          <div class="content">
-            <small><%= time_ago_in_words car.created_at%></small>
-          </div>
+<% @cars.each_with_index do |car, index| %>
+  <%= "</div>".html_safe if index%3 == 0 && index != 0 %>
+  <%= "<div class=\"columns\">".html_safe if index%3 == 0 %>
+  <div class="column">
+    <%= link_to car_path(car) do %>
+    <div class="card"> 
+      <figure class="card-image">
+        <%= image_tag car.picture.url(:thumb) %>
+      </figure>
+      <div class="card-content">
+        <div class="content">
+          <small><%= time_ago_in_words car.created_at%></small>
         </div>
       </div>
-    <% end %>
     </div>
   <% end %>
   </div>
+<% end %>
 </div>
