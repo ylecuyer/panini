@@ -67,3 +67,7 @@ body {
   z-index: 1030;
   top: 0;
 }
+
+.header strong {
+  text-transform: uppercase;
+}

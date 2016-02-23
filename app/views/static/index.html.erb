@@ -14,11 +14,11 @@
         <% end %>
       </figure>
       <div class="card-content">
-        <div class="content">
+        <div class="content" style="text-align: center">
         <% if @car %>
           <small><%= time_ago_in_words @car.created_at %></small>
         <% else %>
-          <small>11:09 PM - 1 Jan 2016</small>
+          <small>🚘 La encontró? sube la foto! 📷</small>
         <% end %>
         </div>
       </div>
@@ -37,7 +37,7 @@ function paddy(n, p, c) {
 }
 
 function scroll(id) {
-  window.scrollTo(0, document.getElementById(paddy(id, 3)).offsetTop + 50)
+  window.scrollTo(0, document.getElementById(paddy(id, 3)).offsetTop - (window.innerHeight-265)/2)
 }
 
 function goToPlate() {
