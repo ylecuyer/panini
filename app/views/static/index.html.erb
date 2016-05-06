@@ -1,3 +1,17 @@
+<div class="message">
+  <div class="message-header">
+    Subir una foto
+  </div>
+  <div class="message-body">
+    Al subir una foto se encontrara el numero de la placa:
+    <%= form_for(@car) do |f| %>
+      <%= f.file_field :picture %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
+
+
 <% (0..999).each do |index| %>
   <% @car = @cars[index] %>
   <%= "</div>".html_safe if index%3 == 0 && index != 0 %>
